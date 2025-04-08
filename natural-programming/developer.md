@@ -1,0 +1,1 @@
+User requests a function to map weather codes to music moods, given a list of weather conditions as input.

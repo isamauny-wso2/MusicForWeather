@@ -1,0 +1,4 @@
+[package]
+org = "anuruddha"
+name = "weatherandmusic"
+version = "0.1.0"
