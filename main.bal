@@ -3,21 +3,6 @@ import ballerina/log;
 
 listener http:Listener httpDefaultListener = http:getDefaultListener();
 
-// Configurable variables
-configurable string SPOTIFY_CLIENT_ID = ?;
-configurable string SPOTIFY_CLIENT_SECRET = ?;
-configurable string WEATHER_API_KEY = ?;
-
-// Spotify OAuth2 client
-http:Client spotifyClient = check new ("https://api.spotify.com/v1",
-    auth = {
-        tokenUrl: "https://accounts.spotify.com/api/token",
-        clientId: SPOTIFY_CLIENT_ID,
-        clientSecret: SPOTIFY_CLIENT_SECRET
-    }
-);
-http:Client weatherClient = check new ("http://api.weatherapi.com/v1/");
-
 function getMusicMood(int weatherCode) returns string {
     map<string> weatherMoodMap = {
         "1000": "Happy, Upbeat", // Sunny, Clear
