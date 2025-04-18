@@ -20,7 +20,7 @@ type Current record {|
     int last_updated_epoch;
     string last_updated;
     decimal temp_c;
-    int temp_f;
+    decimal temp_f;
     int is_day;
     Condition condition;
     decimal wind_mph;
@@ -29,8 +29,8 @@ type Current record {|
     string wind_dir;
     int pressure_mb;
     decimal pressure_in;
-    int precip_mm;
-    int precip_in;
+    decimal precip_mm;
+    decimal precip_in;
     int humidity;
     int cloud;
     decimal feelslike_c;
@@ -48,36 +48,36 @@ type Current record {|
     decimal gust_kph;
 |};
 
-type WeatherData record {
+type WeatherData record {|
     Location location;
     Current current;
-};
+|};
 
-type External_urls record {
+type External_urls record {|
     string spotify;
-};
+|};
 
-type ImagesItem record {
-    json height;
+type ImagesItem record {|
     string url;
-    json width;
-};
+    int|json|() height;
+    int|json|() width;
+|};
 
-type Owner record {
-    string display_name;
+type Owner record {|
     External_urls external_urls;
     string href;
     string id;
     string 'type;
     string uri;
-};
+    string display_name;
+|};
 
-type Tracks record {
+type Tracks record {|
     string href;
     int total;
-};
+|};
 
-type ItemsItem record {
+type ItemsItem record {|
     boolean collaborative;
     string description;
     External_urls external_urls;
@@ -86,36 +86,37 @@ type ItemsItem record {
     ImagesItem[] images;
     string name;
     Owner owner;
-    json primary_color;
     boolean 'public;
     string snapshot_id;
     Tracks tracks;
     string 'type;
     string uri;
-};
+    json primary_color;
+|};
 
 type Playlists record {
     string href;
     int 'limit;
     string next;
     int offset;
+    json? previous;
     int total;
     ItemsItem?[] items;
 };
 
-type SpotifyPlayList record {
+type SpotifyPlayList record {|
     Playlists playlists;
-};
+|};
 
-type PlayListInfo record {|
+type PlaylistInfo record {|
     string name;
-    string artist;
     string url;
+    string artist;
 |};
 
 type MusicSuggestion record {|
-    PlayListInfo[] playList;
     string location;
     string weather;
     string musicMood;
+    PlaylistInfo[] playlist;
 |};
