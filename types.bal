@@ -120,3 +120,60 @@ type MusicSuggestion record {|
     string musicMood;
     PlaylistInfo[] playlist;
 |};
+
+type Coord record {|
+    decimal lon;
+    decimal lat;
+|};
+
+type WeatherItem record {|
+    int id;
+    string main;
+    string description;
+    string icon;
+|};
+
+type Main record {|
+    decimal temp;
+    decimal feels_like;
+    decimal temp_min;
+    decimal temp_max;
+    int pressure;
+    int humidity;
+    int sea_level;
+    int grnd_level;
+|};
+
+type Wind record {|
+    decimal speed;
+    int deg;
+    decimal gust;
+|};
+
+type Clouds record {|
+    int all;
+|};
+
+type Sys record {|
+    int 'type;
+    int id;
+    string country;
+    int sunrise;
+    int sunset;
+|};
+
+type WeatherRecord record {|
+    Coord coord;
+    WeatherItem[] weather;
+    string base;
+    Main main;
+    int visibility;
+    Wind wind;
+    Clouds clouds;
+    int dt;
+    Sys sys;
+    int timezone;
+    int id;
+    string name;
+    int cod;
+|};
